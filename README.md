@@ -35,9 +35,9 @@ but for GET mybe dont need add data param.
 
 ```
 ##how testing
-+use jasmine for testing
-+run teste with karma start
++ use jasmine for testing
++  run teste with karma start
 
 ##how build
-+npm run build-prod
++ npm run build-prod
 
