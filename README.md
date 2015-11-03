@@ -1,29 +1,43 @@
 # SimpleAjax
 Micro Lib for HttpRequest
+with 477 bytes.
 
 ##To use
 ```html
-  <script src="src/js/lib/simpleajax.min.js"></script>
+  <script src="/dist/js/simpleajax.min.js"></script>
 ```
   in you index.html
 
 ##The API
 
-how use $.service(method, URL , callback , JSbject);
+how use ajaxPromise(method, URL, data);
 
 you can use GET, PUT, POST or DELETE,
-but for GET dont need add last parameter.
+but for GET mybe dont need add data param.
 
-#Exemple
+##Exemple
 
 ```js
+
   var url = "https://bloog-limp.herokuapp.com/api/alunos/";
   var method = "GET";
+  var ajax = ajaxPromise;
 
-  $.ajaxservice(method, url, result);
+  ajax(method, url).then(success, fail);
 
-  function result(err , data){
-    if(!err) console.log(data);
+  function success(data){
+    console.log(data);
   }
+
+  function fail (err) {
+    console.log(err);
+  }
+
 ```
+##how testing
++use jasmine for testing
++run teste with karma start
+
+##how build
++npm run build-prod
 

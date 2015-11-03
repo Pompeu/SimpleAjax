@@ -1,6 +1,6 @@
 {
   "name": "simpleAjax",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "simpleAjax Lib for get post put delete http request",
   "main": "app.js",
   "scripts": {
