@@ -40,7 +40,7 @@ describe('Simple Ajax lib Test',  () => {
       
   });
 
-  it('request should be have an have url', done => {
+  it('request should the url is required!', done => {
     let ajax = ajaxPromise;
 
     expect(ajax()).toThrowError(TypeError, "url is required!");
