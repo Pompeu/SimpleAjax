@@ -1,8 +1,8 @@
 'use strict';
 
 const gulp = require('gulp'),
-      uglify = require('gulp-uglify'),
-      concat = require('gulp-concat'); 
+  uglify = require('gulp-uglify'),
+  concat = require('gulp-concat'); 
 
 gulp.task('js-prod', () => {
   return  gulp.src('src/js/lib/*.js')
