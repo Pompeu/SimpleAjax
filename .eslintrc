@@ -1,9 +1,12 @@
 {
+  "env":{
+    "es6": true,
+  },
     "ecmaFeatures": {
-        "blockBindings": true,
-        "arrowFunctions": true,
+      "blockBindings": true,
+      "arrowFunctions": true,
     },
     "rules": {
-        "semi": 2
+      "semi": 2
     }
 } 
