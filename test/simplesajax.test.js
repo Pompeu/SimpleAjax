@@ -3,14 +3,14 @@
 describe('Simple Ajax lib Test',  () => {
 
   it('should have property ajaxservice', () => {
-    let ajax = ajaxPromise;
+    const ajax = ajaxPromise;
     expect(ajax).toBeDefined();
   });
 
   it('should GET request recive data', done => {
-    let ajax = ajaxPromise;
-    let url = "http://redeconhecimentos.herokuapp.com/api/user";
-    let method = "GET";
+    const ajax = ajaxPromise;
+    const url = "http://redeconhecimentos.herokuapp.com/api/user";
+    const method = "GET";
 
     ajax(method,url)
       .then(function(data) {
@@ -20,7 +20,7 @@ describe('Simple Ajax lib Test',  () => {
   });
 
   it('should Post request with  bad url get same error on promise', done => {
-    let ajax = ajaxPromise,
+    const ajax = ajaxPromise,
       url = "http://redeconhecimentos.herokuapp.com/1api/user",
       method = "POST",
       data = {
@@ -41,7 +41,7 @@ describe('Simple Ajax lib Test',  () => {
   });
 
   it('request should the url is required!', done => {
-    let ajax = ajaxPromise;
+    const ajax = ajaxPromise;
     ajax()
       .catch(err => {
         expect(err).toBeDefined() ;
