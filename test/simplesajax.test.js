@@ -9,45 +9,18 @@ describe('Simple Ajax lib Test',  () => {
 
   it('should GET request recive data', done => {
     const ajax = ajaxPromise;
-    const url = "http://redeconhecimentos.herokuapp.com/api/user";
-    const method = "GET";
+    const params = {
+      url: "http://redeconhecimentos.herokuapp.com/api/user",
+      method: "GET"
+    };
 
-    ajax(method,url)
-      .then(function(data) {
-        expect(data).toBeTruthy();
+    ajax(params)
+      .then(res => {
+        expect(res.data.err == null).toBeTruthy();
+        expect(res.data.result).toBeDefined();
         done();
-      });
-  });
-
-  it('should Post request with  bad url get same error on promise', done => {
-    const ajax = ajaxPromise,
-      url = "http://redeconhecimentos.herokuapp.com/1api/user",
-      method = "POST",
-      data = {
-        email: "opa@opa.com",
-        name: "Itacir",
-        sname: "Pompeu",
-        password: "12345678"
-      };
-
-      ajax(method,url,data)
-        .then(data => {
-          expect(data).toBeTruthy();
-        },err => {
-          expect(err).toBeTruthy();
-          done();
-        });
-
-  });
-
-  it('request should the url is required!', done => {
-    const ajax = ajaxPromise;
-    ajax()
-      .catch(err => {
-        expect(err).toBeDefined() ;
-        expect(err).toEqual('url is required!');
-        done();
-      });
+      })
+      .catch(done);
   });
 
 });

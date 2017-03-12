@@ -1,37 +1,27 @@
 window.ajaxPromise = (function(){
 
-  const req =  new XMLHttpRequest();
+  const req = new XMLHttpRequest();
+  const result = req => ({
+    data: JSON.parse(req.response),
+    status: req.status
+  });
 
-  return function ajaxparams(method, url, data, contentType) {
-
-    data = JSON.stringify(data) || null;
-
-    contentType = contentType || 'application/json';
+  return function ajaxparams({method = 'GET', url, data = null, contentType = 'application/json'}) {
 
     if (!url) {
       return Promise.reject('url is required!');
-    } else {
-      req.open(method.toUpperCase(), url, true);
     }
 
+    req.open(method.toUpperCase(), url, true);
     req.setRequestHeader('Content-Type', contentType);
     req.send(data);
 
     return new Promise((resolve, reject) =>  {
 
+      const success = () => (req.status < 400 && req.readyState === 4) ?
+          resolve(result(req)) : reject(result(req));
+
       req.addEventListener('load', success, false);
-
-      function success() {
-
-        if (req.status < 300 && req.readyState === 4) {
-          return resolve(JSON.parse(req.response));
-        } else if (req.status >= 300) {
-          return reject({
-            response: req.statusText,
-            status:   req.status
-          });
-        }
-      }
     });
   };
 })();
