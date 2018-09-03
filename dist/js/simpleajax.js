@@ -29,7 +29,8 @@ window.ajaxPromise = function () {
           return resolve(JSON.parse(req.response));
         } else if (req.status >= 300) {
           return reject({
-            response: req.statusText,
+            response: JSON.parse(req.response),
+            statusText: req.statusText,
             status: req.status
           });
         }
